@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package grpc_mongo;
+option go_package="/proto/blog";
+
+// Blog request
+message BlogRequest {
+    string id = 1;
+    string author_id = 2;
+    string title = 3;
+    string content = 4;
+}
+
+// message BlogResponse {
+    
+// }
+
+service BlogService{
+    // rpc Blog(BlogRequest) returns (BlogResponse){};
+};
