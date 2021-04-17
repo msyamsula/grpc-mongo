@@ -19,18 +19,19 @@ func main() {
 
 	c := blog.NewBlogServiceClient(conn)
 
-	// req := &blog.CreateBlogRequest{
-	// 	AuthorId: "7",
-	// 	Title:    "Muhammad",
-	// 	Content:  "Competitive Programming",
-	// }
+	// create
+	req := &blog.CreateBlogRequest{
+		AuthorId: "7",
+		Title:    "Muhammad",
+		Content:  "Competitive Programming",
+	}
 
-	// resp, err := c.CreateBlog(context.Background(), req)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	resp, err := c.CreateBlog(context.Background(), req)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// println(resp.GetStatus())
+	println(resp.GetStatus())
 
 	// update call
 	updateReq := &blog.UpdateBlogRequest{
@@ -75,13 +76,14 @@ func main() {
 		fmt.Printf("get data --> author_id: %v, title: %v, content: %v\n", author_id, title, content)
 	}
 
-	// cleanReq := &blog.CleanBlogRequest{}
-	// cresp, cerr := c.CleanBlog(context.Background(), cleanReq)
-	// if cerr != nil {
-	// 	log.Println(err)
-	// 	log.Println(cresp.GetResponse())
-	// 	return
-	// }
+	// clean up
+	cleanReq := &blog.CleanBlogRequest{}
+	cresp, cerr := c.CleanBlog(context.Background(), cleanReq)
+	if cerr != nil {
+		log.Println(err)
+		log.Println(cresp.GetResponse())
+		return
+	}
 
-	// log.Println(cresp.GetResponse())
+	log.Println(cresp.GetResponse())
 }
