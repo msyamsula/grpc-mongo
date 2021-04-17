@@ -19,9 +19,17 @@ export-import notes
 
 
 Folder Description
-1. connection:
-it consists of connection to mongo db, it has function that return client and db that can be reused
-2. mongo101
-contains basic operation of mongodb in go like, create, read, update, and delete
-4. model contain object mapping to mongo
-5. proto is where protobuf grpc live
+1. connection: it consists of connection to mongo db, it has function that return client and db that can be reused
+2. mongo101: contains basic operation of mongodb in go like, create, read, update, and delete
+4. model: contain object mapping to mongo
+5. proto: is where protobuf grpc live
+6. service: include all function that can be called by client (remote function)
+7. server: this location is entrypoint of this app
+
+
+How to run:
+1. look at .proto file in proto folder to gain insight at beginning
+2. generate all .proto with generate.sh
+3. see all service that can be called remotely by looking at service folder
+4. tidy up go module by running "go mod tidy"
+5. run with make file, for server "make starts", for client "make startc"

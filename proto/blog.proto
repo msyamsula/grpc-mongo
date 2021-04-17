@@ -30,8 +30,32 @@ message GetAllBlogResponse {
     string content = 3;
 }
 
+message CleanBlogRequest {
+}
+
+message CleanBlogResponse {
+    string Response = 1;
+}
+
+message UpdateBlogRequest {
+    string author_id = 1;
+    string tile = 2;
+    string content = 3;
+
+    string new_author_id = 4;
+    string new_tile = 5;
+    string new_content = 6;
+    
+}
+
+message UpdateBlogResponse {
+    string Response = 1;
+}
+
 
 service BlogService{
     rpc CreateBlog(CreateBlogRequest) returns (CreateBlogResponse){};
     rpc GetAllBlog(GetAllBlogRequest) returns (stream GetAllBlogResponse){};
+    rpc CleanBlog(CleanBlogRequest) returns (CleanBlogResponse){};
+    rpc UpdateBlog(UpdateBlogRequest) returns (UpdateBlogResponse){};
 };
