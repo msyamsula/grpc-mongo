@@ -4,17 +4,34 @@ package grpc_mongo;
 option go_package="/proto/blog";
 
 // Blog request
-message BlogRequest {
+message Blog {
     string id = 1;
     string author_id = 2;
     string title = 3;
     string content = 4;
 }
 
-// message BlogResponse {
-    
-// }
+message CreateBlogRequest {
+    string author_id = 1;
+    string title = 2;
+    string content = 3;
+}
+
+message CreateBlogResponse {
+    string status = 1;
+}
+
+message GetAllBlogRequest {
+}
+
+message GetAllBlogResponse {
+    string author_id = 1;
+    string title = 2;
+    string content = 3;
+}
+
 
 service BlogService{
-    // rpc Blog(BlogRequest) returns (BlogResponse){};
+    rpc CreateBlog(CreateBlogRequest) returns (CreateBlogResponse){};
+    rpc GetAllBlog(GetAllBlogRequest) returns (stream GetAllBlogResponse){};
 };

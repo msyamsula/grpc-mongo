@@ -2,37 +2,33 @@ package connection
 
 import (
 	"context"
-	"fmt"
+	"log"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-func mongo_connection(timeout time.Duration) *mongo.Client {
-	uri := "mongodb+srv://mongo:mongo@localhost:27017/grpc"
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
-	defer cancel()
+var MongoDB *mongo.Database
+var MongoClient *mongo.Client
 
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
+func MongoConnection(uri string, db string, timeout time.Duration) {
 
+	// connect to mongo with option
+	clientOption := options.Client().ApplyURI(uri)
+	ctx := context.TODO()
+	client, err := mongo.Connect(ctx, clientOption)
 	if err != nil {
-		panic(err)
+		log.Fatalf("%v", err)
 	}
 
-	defer func() {
-		if err = client.Disconnect(ctx); err != nil {
-			panic(err)
-		}
-	}()
-
-	if err = client.Ping(ctx, readpref.Primary()); err != nil {
-		panic(err)
+	// ping
+	err = client.Ping(ctx, nil)
+	if err != nil {
+		log.Fatalf("%v", err)
 	}
 
-	fmt.Println("successfully connect and ping")
-
-	return client
+	MongoDB = client.Database(db)
+	MongoClient = client
 
 }

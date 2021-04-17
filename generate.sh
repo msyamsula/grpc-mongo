@@ -1,1 +1,1 @@
-protoc $1 --go_out=plugins=grpc:.
+protoc ./proto/blog.proto --go_out=plugins=grpc:.
