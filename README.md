@@ -12,6 +12,10 @@ requirements:
     docs
     a. (https://docs.mongodb.com/drivers/go/)
     b. https://www.mongodb.com/blog/search/golang%20quickstart
+4. evant-cli : https://github.com/ktr0731/evans
+    a. installation: go get github.com/ktr0731/evans 
+    b. add code snippet "relection.Register(s)" to register reflection in your code
+    c. run evans -r, to see other option check evans --help
 
 
 export-import notes
@@ -28,8 +32,18 @@ Folder Description
 
 
 How to run:
+pre-requisite: run mongo docker, or prepare your mongodb instance
 1. look at .proto file in proto folder to gain insight at beginning
 2. generate all .proto with generate.sh
 3. see all service that can be called remotely by looking at service folder
 4. tidy up go module by running "go mod tidy"
 5. run with make file, for server "make starts", for client "make startc"
+
+
+useful evans-cli command:
+1. show service: list service server
+2. show message: show all message struct that is use in your service
+3. package "name": go to that package
+4. service "name": enter that service
+5. show rpc: list of function to be called
+6. call "rpc name": simulate rpc call

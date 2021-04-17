@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -34,6 +35,9 @@ func main() {
 	s := grpc.NewServer()
 	// register blog service
 	blog.RegisterBlogServiceServer(s, &service.Server{})
+
+	// register reflection
+	reflection.Register(s)
 
 	// run server with go routine
 	go func() {
