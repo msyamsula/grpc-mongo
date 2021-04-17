@@ -1,0 +1,20 @@
+version: "3"
+
+services: 
+    grpc-server:
+        image: grpc-mongo
+        container_name: grpc-server
+        hostname: grpc-server
+        working_dir: /go/src/github.com/msyamsula/grpc_mongo
+        ports: 
+            - 50051:50051
+        volumes: 
+            - "./connection:/go/src/github.com/msyamsula/grpc_mongo/connection"
+            - "./model:/go/src/github.com/msyamsula/grpc_mongo/model"
+            - "./proto:/go/src/github.com/msyamsula/grpc_mongo/proto"
+            - "./server:/go/src/github.com/msyamsula/grpc_mongo/server"
+            - "./service:/go/src/github.com/msyamsula/grpc_mongo/service"
+            - "./Makefile:/go/src/github.com/msyamsula/grpc_mongo/Makefile"
+        command: "make starts"
+            
+            

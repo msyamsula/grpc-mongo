@@ -20,6 +20,7 @@ requirements:
 
 export-import notes
 1. go only export func and variable that is begun with Capital
+2. use 0.0.0.0 instead of localhost when move to docker
 
 
 Folder Description
@@ -47,3 +48,4 @@ useful evans-cli command:
 4. service "name": enter that service
 5. show rpc: list of function to be called
 6. call "rpc name": simulate rpc call
+when doing streaming simulation ctrl+D is used to stop streaming

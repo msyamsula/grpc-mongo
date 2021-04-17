@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
+	conn, err := grpc.Dial("0.0.0.0:50051", grpc.WithInsecure())
 	if err != nil {
 		fmt.Println("something wrong")
 		log.Fatal(err)
@@ -28,6 +28,7 @@ func main() {
 
 	resp, err := c.CreateBlog(context.Background(), req)
 	if err != nil {
+		log.Println("Failed to create")
 		log.Fatal(err)
 	}
 

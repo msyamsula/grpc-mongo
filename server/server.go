@@ -20,12 +20,12 @@ func main() {
 	// log trick
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	uri := "mongodb://mongo:mongo@localhost:27017"
+	uri := "mongodb://mongo:mongo@host.docker.internal:27017"
 	dbName := "grpc"
 	connection.MongoConnection(uri, dbName, 5*time.Second)
 
 	// listener
-	lis, err := net.Listen("tcp", "localhost:50051")
+	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 
 	if err != nil {
 		log.Fatalf("%v", err)
