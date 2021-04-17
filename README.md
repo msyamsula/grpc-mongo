@@ -49,3 +49,8 @@ useful evans-cli command:
 5. show rpc: list of function to be called
 6. call "rpc name": simulate rpc call
 when doing streaming simulation ctrl+D is used to stop streaming
+
+next topic
+1. grpc-gateway --> create grpc and rest api (https://github.com/grpc-ecosystem/grpc-gateway#usage)
+2. Gogo --> alternative implementation of gRPC (https://github.com/gogo/protobuf, https://jbrandhorst.com/post/gogoproto/)
+3. gRPC docs --> https://grpc.io
