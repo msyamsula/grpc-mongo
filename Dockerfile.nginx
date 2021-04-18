@@ -1,0 +1,6 @@
+FROM nginx:latest
+RUN apt-get update
+
+WORKDIR /etc/nginx
+
+COPY ./nginx.conf nginx.conf
